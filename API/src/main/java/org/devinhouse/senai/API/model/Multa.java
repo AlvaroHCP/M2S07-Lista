@@ -15,6 +15,8 @@ public class Multa {
     private String local;
     private String motivo;
     private Float valor;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "multa")
+    @ManyToOne
+    @JoinColumn(name = "PLACA", referencedColumnName = "PLACA")
     private Veiculo veiculo;
+
 }

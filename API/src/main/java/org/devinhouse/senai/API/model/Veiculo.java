@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "VEICULOS")
 @NoArgsConstructor
@@ -16,6 +18,6 @@ public class Veiculo {
     private String nome;
     private Integer anoFabricacao;
     private String cor;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "veiculo")
-    private Multa multas;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "veiculo")
+    private List<Multa> multas;
 }
