@@ -2,6 +2,7 @@ package org.devinhouse.senai.API.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Table(name = "VEICULOS")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Veiculo {
     @Id
     private String placa;

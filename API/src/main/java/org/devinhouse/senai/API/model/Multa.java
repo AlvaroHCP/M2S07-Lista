@@ -2,12 +2,14 @@ package org.devinhouse.senai.API.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "MULTAS")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Multa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
