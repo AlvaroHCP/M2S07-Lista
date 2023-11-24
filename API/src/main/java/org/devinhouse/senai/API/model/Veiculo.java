@@ -22,4 +22,8 @@ public class Veiculo {
     private String cor;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "veiculo")
     private List<Multa> multas;
+
+    public Veiculo(String placa){
+        this.placa = placa;
+    }
 }
