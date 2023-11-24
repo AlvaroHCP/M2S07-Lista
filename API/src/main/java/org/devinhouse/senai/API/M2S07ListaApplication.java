@@ -48,6 +48,10 @@ public class M2S07ListaApplication {
 				multaGravada.setValor(380F);
 				apiController.getMultaRepo().save(multaGravada);
 			}
+
+			List<Veiculo> veiculosGravados = apiController.getVeiculoRepo().findAll();
+			System.out.println(veiculosGravados);
+
 		};
 	}
 
