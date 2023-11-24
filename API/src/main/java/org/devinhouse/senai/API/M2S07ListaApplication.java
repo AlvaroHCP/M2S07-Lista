@@ -23,21 +23,33 @@ public class M2S07ListaApplication {
 		return args -> {
 
 			Veiculo veiculo1 = new Veiculo("ABC-1234", TipoVeiculo.AUTOMOVEL,
-					"Bat-Movel", 2022, "preto",null);
+					"Bat-Movel", 2022, "preto", null);
 			Veiculo veiculo2 = new Veiculo("BCA-4321", TipoVeiculo.ONIBUS,
-					"Enterprise", 1960, "prata",null);
+					"Enterprise", 1960, "prata", null);
 
-			List<Veiculo> veiculos = List.of(veiculo1, veiculo2);
-			apiController.getVeiculoRepo().saveAll(veiculos);
+			if(apiController.getVeiculoRepo().findAll().isEmpty()) {
+				List<Veiculo> veiculos = List.of(veiculo1, veiculo2);
+				apiController.getVeiculoRepo().saveAll(veiculos);
+			}
 
 
-			List<Multa> multas = List.of( new Multa("Gothan City", "Farol apagado", 250F, veiculo1),
-					new Multa("Gothan City", "Insulfilm", 100F, veiculo1),
-					new Multa("Hiper-espaço", "Excesso velocidade", 400F, veiculo2));
-			apiController.getMultaRepo().saveAll(multas);
+			Multa multa1 = new Multa("Gothan City", "Farol apagado", 250F, veiculo1);
+			Multa multa2 = new Multa("Gothan City", "Insulfilm", 100F, veiculo1);
+			Multa multa3 = new Multa("Hiper-espaço", "Excesso velocidade", 400F, veiculo2);
+
+			if(apiController.getMultaRepo().findAll().isEmpty()) {
+				List<Multa> multas = List.of(multa1, multa2, multa3);
+				apiController.getMultaRepo().saveAll(multas);
+			}
+
+			Multa multaGravada = apiController.getMultaRepo().findAll().stream()
+					.filter(multa -> multa.getValor().equals(400F)).toList().get(0);
+			if (multaGravada.getValor().equals(multa3.getValor())) {
+				multaGravada.setValor(380F);
+				apiController.getMultaRepo().save(multaGravada);
+			}
 		};
 	}
-
 
 
 }
