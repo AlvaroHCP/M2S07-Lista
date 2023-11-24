@@ -1,5 +1,6 @@
 package org.devinhouse.senai.API;
 
+import org.devinhouse.senai.API.model.Multa;
 import org.devinhouse.senai.API.model.TipoVeiculo;
 import org.devinhouse.senai.API.model.Veiculo;
 import org.springframework.boot.CommandLineRunner;
@@ -23,8 +24,8 @@ public class M2S07ListaApplication {
 
 			Veiculo veiculo1 = new Veiculo("ABC-1234", TipoVeiculo.AUTOMOVEL,
 					"Bat-Movel", 2022, "preto",null);
-			Veiculo veiculo2 = new Veiculo("ABC-1234", TipoVeiculo.AUTOMOVEL,
-					"Bat-Movel", 2022, "preto",null);
+			Veiculo veiculo2 = new Veiculo("BCA-4321", TipoVeiculo.ONIBUS,
+					"Enterprise", 1960, "prata",null);
 
 			List<Veiculo> veiculos = List.of(veiculo1, veiculo2);
 			apiController.getVeiculoRepo().saveAll(veiculos);
