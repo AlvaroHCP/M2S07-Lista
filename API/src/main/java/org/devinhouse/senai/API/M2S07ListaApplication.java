@@ -31,7 +31,10 @@ public class M2S07ListaApplication {
 			apiController.getVeiculoRepo().saveAll(veiculos);
 
 
-
+			List<Multa> multas = List.of( new Multa("Gothan City", "Farol apagado", 250F, veiculo1),
+					new Multa("Gothan City", "Insulfilm", 100F, veiculo1),
+					new Multa("Hiper-espaço", "Excesso velocidade", 400F, veiculo2));
+			apiController.getMultaRepo().saveAll(multas);
 		};
 	}
 
