@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class M2S07ListaApplication {
@@ -42,15 +43,18 @@ public class M2S07ListaApplication {
 				apiController.getMultaRepo().saveAll(multas);
 			}
 
-			Multa multaGravada = apiController.getMultaRepo().findAll().stream()
-					.filter(multa -> multa.getValor().equals(400F)).toList().get(0);
-			if (multaGravada.getValor().equals(multa3.getValor())) {
+			List<Multa> multaFiltrada = apiController.getMultaRepo().findAll().stream()
+					.filter(multa -> multa.getValor().equals(400F)).toList();
+			if(! multaFiltrada.isEmpty()){
+				Multa multaGravada = multaFiltrada.get(0);
 				multaGravada.setValor(380F);
 				apiController.getMultaRepo().save(multaGravada);
 			}
 
 			List<Veiculo> veiculosGravados = apiController.getVeiculoRepo().findAll();
-			System.out.println(veiculosGravados);
+			for(Veiculo veiculo : veiculosGravados) {
+				System.out.println(veiculo);
+			}
 
 		};
 	}
